@@ -94,13 +94,15 @@
           <button onclick="sendReply()">Send Reaction</button>
         </div>
       `;
+
       window.sendReply = function () {
         const msg = document.getElementById("replyBox").value.trim();
         if (!msg) return alert("Please write something first!");
-        alert("Your message has been sent to " + name + ": " + msg);
-        document.getElementById("replyBox").value = "";
+        const encodedMsg = encodeURIComponent(`Hi ${name}, here's my message: ${msg}`);
+        const whatsappLink = `https://wa.me/254752578163?text=${encodedMsg}`;
+        window.open(whatsappLink, '_blank');
       };
     }
   </script>
 </body>
-  </html>
+</html>
