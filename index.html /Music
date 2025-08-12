@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beautiful Things</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      color: #4b2e2e;
+      text-align: center;
+      padding: 40px;
+    }
+    img {
+      width: 80%;
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+    .note {
+      font-size: 1.3em;
+      margin-top: 30px;
+      font-style: italic;
+    }
+    .reply-btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 24px;
+      background-color: #25D366;
+      color: red;
+      font-weight: italic;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Beautiful Things 💖</h1>
+  <img src="https://your-image-link.jpg" alt="Beautiful moment" />
+  <audio autoplay loop>
+    <source src="https://your-music-link.mp3" type="audio/mp3">
+  </audio>
+  <div class="note">You make life bloom in ways words can't describe.</div>
+
+  <a class="reply-btn" href="https://wa.me/254752578163>254714787917?text=Hi%20💬">Reply on WhatsApp 💬</a>
+
+</body>
+</html>
