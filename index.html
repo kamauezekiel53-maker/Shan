@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send a Beautiful Message</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffe0e0, #ffd6d6);
+      text-align: center;
+      color: #4b2e2e;
+      padding: 20px;
+    }
+    input, textarea {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 10px;
+      border: none;
+      margin: 10px;
+      width: 80%;
+      max-width: 400px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .message {
+      font-size: 1.2em;
+      margin-top: 20px;
+      font-style: italic;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .image {
+      margin-top: 20px;
+      max-width: 90%;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .reaction {
+      margin-top: 30px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Send a Beautiful Message 💖</h1>
+  <input type="text" id="nameInput" placeholder="Your name" />
+  <input type="text" id="imageInput" placeholder="Paste image link (e.g. from Postimages)" />
+  <br />
+  <button onclick="generateLink()">Generate Link</button>
+  <div id="linkBox"></div>
+
+  <script>
+    function generateLink() {
+      const name = document.getElementById("nameInput").value.trim();
+      const image = document.getElementById("imageInput").value.trim();
+      if (!name || !image) return alert("Please enter both name and image link.");
+      const url = `${location.origin}${location.pathname}?name=${encodeURIComponent(name)}&image=${encodeURIComponent(image)}`;
+      document.getElementById("linkBox").innerHTML = `
+        <p>Share this link:</p>
+        <a href="${url}" target="_blank">${url}</a>
+      `;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const image = params.get("image");
+
+    if (name && image) {
+      document.body.innerHTML = `
+        <h1>Hello from ${name} 💌</h1>
+        <img src="${image}" alt="Special Image" class="image" />
+        <audio autoplay loop>
+          <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+        </audio>
+        <div class="message">"You light up the world in ways no one else can."</div>
+        <div class="message">"Every moment with you feels like a beautiful dream."</div>
+        <div class="message">"Your smile is my favorite sunshine."</div>
+        <div class="message">"You are the reason ordinary days feel extraordinary."</div>
+        <div class="reaction">
+          <textarea id="replyBox" placeholder="Write your message to ${name}..."></textarea>
+          <br />
+          <button onclick="sendReply()">Send Reaction</button>
+        </div>
+      `;
+      window.sendReply = function () {
+        const msg = document.getElementById("replyBox").value.trim();
+        if (!msg) return alert("Please write something first!");
+        alert("Your message has been sent to " + name + ": " + msg);
+        document.getElementById("replyBox").value = "";
+      };
+    }
+  </script>
+</body>
+  </html>
